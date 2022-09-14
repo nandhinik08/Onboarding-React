@@ -92,17 +92,25 @@ export default function HorizontalNonLinearStepper() {
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
               {activeStep == 0 ? (
-                <FirstPage handleNext={handleNext}></FirstPage>
+                <FirstPage handleComplete={handleComplete}></FirstPage>
               ) : (
                 ""
               )}
-              {activeStep == 1 ? <Home handleNext={handleNext}></Home> : ""}
+              {activeStep == 1 ? (
+                <Home handleComplete={handleComplete}></Home>
+              ) : (
+                ""
+              )}
               {activeStep == 2 ? (
-                <Planning handleNext={handleNext}></Planning>
+                <Planning handleComplete={handleComplete}></Planning>
               ) : (
                 ""
               )}
-              {activeStep == 3 ? <Final handleNext={handleNext}></Final> : ""}
+              {activeStep == 3 ? (
+                <Final handleComplete={handleComplete}></Final>
+              ) : (
+                ""
+              )}
             </Typography>
           </React.Fragment>
         )}
