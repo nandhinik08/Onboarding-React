@@ -5,15 +5,14 @@ import Step from "@mui/material/Step";
 import StepButton from "@mui/material/StepButton";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Welcome from "./welcome";
+import FirstPage from "./firstpage";
 
 import { useState, useEffect } from "react";
+import Home from "./home";
+import Planning from "./planning";
+import Final from "./final";
 
-const steps = [
-  "Select campaign settings",
-  "Create an ad group",
-  "Create an ad",
-];
+const steps = ["", "", "", ""];
 
 export default function HorizontalNonLinearStepper() {
   const [activeStep, setActiveStep] = useState(0);
@@ -67,15 +66,17 @@ export default function HorizontalNonLinearStepper() {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Stepper nonLinear activeStep={activeStep}>
-        {steps.map((label, index) => (
-          <Step key={label} completed={completed[index]}>
-            <StepButton color="inherit" onClick={handleStep(index)}>
-              {label}
-            </StepButton>
-          </Step>
-        ))}
-      </Stepper>
+      <Box sx={{ width: "30%", margin: "auto" }}>
+        <Stepper nonLinear activeStep={activeStep}>
+          {steps.map((label, index) => (
+            <Step key={label} completed={completed[index]}>
+              <StepButton color="inherit" onClick={handleStep(index)}>
+                {label}
+              </StepButton>
+            </Step>
+          ))}
+        </Stepper>
+      </Box>
       <div>
         {allStepsCompleted() ? (
           <React.Fragment>
@@ -90,37 +91,19 @@ export default function HorizontalNonLinearStepper() {
         ) : (
           <React.Fragment>
             <Typography sx={{ mt: 2, mb: 1, py: 1 }}>
-              {activeStep == 0 ? <Welcome></Welcome> : "no touch"}
+              {activeStep == 0 ? (
+                <FirstPage handleNext={handleNext}></FirstPage>
+              ) : (
+                ""
+              )}
+              {activeStep == 1 ? <Home handleNext={handleNext}></Home> : ""}
+              {activeStep == 2 ? (
+                <Planning handleNext={handleNext}></Planning>
+              ) : (
+                ""
+              )}
+              {activeStep == 3 ? <Final handleNext={handleNext}></Final> : ""}
             </Typography>
-            <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-              <Button
-                color="inherit"
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                sx={{ mr: 1 }}
-              >
-                Back
-              </Button>
-              <Box sx={{ flex: "1 1 auto" }} />
-              <Button onClick={handleNext} sx={{ mr: 1 }}>
-                Next
-              </Button>
-              {activeStep !== steps.length &&
-                (completed[activeStep] ? (
-                  <Typography
-                    variant="caption"
-                    sx={{ display: "inline-block" }}
-                  >
-                    Step {activeStep + 1} already completed
-                  </Typography>
-                ) : (
-                  <Button onClick={handleComplete}>
-                    {completedSteps() === totalSteps() - 1
-                      ? "Finish"
-                      : "Complete Step"}
-                  </Button>
-                ))}
-            </Box>
           </React.Fragment>
         )}
       </div>
