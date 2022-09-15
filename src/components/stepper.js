@@ -3,10 +3,8 @@ import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepButton from "@mui/material/StepButton";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import FirstPage from "./firstpage";
-
 import { useState, useEffect } from "react";
 import Home from "./home";
 import Planning from "./planning";
@@ -37,15 +35,9 @@ export default function HorizontalNonLinearStepper() {
   const handleNext = () => {
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
-        ? // It's the last step, but not all steps have been completed,
-          // find the first step that has been completed
-          steps.findIndex((step, i) => !(i in completed))
+        ? steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
     setActiveStep(newActiveStep);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   const handleStep = (step) => () => {
@@ -59,14 +51,9 @@ export default function HorizontalNonLinearStepper() {
     handleNext();
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-    setCompleted({});
-  };
-
   return (
     <Box sx={{ width: "100%" }}>
-      <Box sx={{ width: "30%", margin: "auto" }}>
+      <Box sx={{ width: "50%", margin: "auto" }}>
         <Stepper nonLinear activeStep={activeStep}>
           {steps.map((label, index) => (
             <Step key={label} completed={completed[index]}>
@@ -77,16 +64,18 @@ export default function HorizontalNonLinearStepper() {
           ))}
         </Stepper>
       </Box>
-      <div>
+      <Box
+        sx={{
+          marginTop: "auto",
+          display: "flex",
+          width: "100%",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         {allStepsCompleted() ? (
           <React.Fragment>
-            <Typography sx={{ mt: 2, mb: 1 }}>
-              All steps completed - you&apos;re finished
-            </Typography>
-            <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-              <Box sx={{ flex: "1 1 auto" }} />
-              <Button onClick={handleReset}>Reset</Button>
-            </Box>
+            <Final handleComplete={0}></Final>
           </React.Fragment>
         ) : (
           <React.Fragment>
@@ -114,7 +103,7 @@ export default function HorizontalNonLinearStepper() {
             </Typography>
           </React.Fragment>
         )}
-      </div>
+      </Box>
     </Box>
   );
 }
