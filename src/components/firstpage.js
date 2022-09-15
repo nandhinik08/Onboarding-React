@@ -26,16 +26,24 @@ export default function FirstPage(props) {
         }}
       >
         <Typography component="h1" variant="h4" sx={{ fontWeight: "bold" }}>
-          Welcome! First thing is First....
+          Welcome! First thing is first...
         </Typography>
         <br />
-        <Typography variant="body1">You can always change it later.</Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 5 }}>
+        <Typography variant="body1">
+          You can always change them later.
+        </Typography>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          noValidate
+          sx={{ mt: 5, width: 400 }}
+        >
           <Typography variant="body1" sx={{ fontWeight: "Medium" }}>
             Full Name
           </Typography>
           <TextField
             sx={{ mb: 2 }}
+            size="small"
             margin="normal"
             fullWidth
             id="FName"
@@ -46,6 +54,7 @@ export default function FirstPage(props) {
           <label>Display Name</label>
           <TextField
             margin="normal"
+            size="small"
             fullWidth
             id="DName"
             name="DName"
@@ -57,7 +66,8 @@ export default function FirstPage(props) {
             fullWidth
             color="primary"
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            size="large"
+            sx={{ mt: 3, mb: 2, textTransform: "none" }}
           >
             Create Workspace
           </Button>

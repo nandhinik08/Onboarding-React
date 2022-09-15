@@ -11,6 +11,7 @@ import CardContent from "@mui/material/CardContent";
 import Card from "@mui/material/Card";
 import GroupsIcon from "@mui/icons-material/Groups";
 import { CardActionArea } from "@mui/material";
+import styles from "../../styles/Home.module.css";
 
 export default function Planning(props) {
   const handleSubmit = (event) => {
@@ -37,37 +38,38 @@ export default function Planning(props) {
         <Typography variant="body1">
           We`ll streamline your setup experience accordingly.
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 5 }}>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          noValidate
+          sx={{ mt: 5, width: 400 }}
+        >
           <Box sx={{ display: "flex", flexDirection: "row" }}>
             <Box sx={{ m: 2 }}>
-              <Card sx={{ maxWidth: 345 }}>
-                <ButtonBase onClick={(event) => {}}>
-                  <CardContent>
-                    <PersonIcon />
-                    <Typography variant="h6" color="text.primary">
-                      For myself
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Write better.Think more clearly.Stay organized
-                    </Typography>
-                  </CardContent>
-                </ButtonBase>
+              <Card className={styles.card} sx={{ maxWidth: 345, height: 200 }}>
+                <CardContent>
+                  <PersonIcon />
+                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                    For myself
+                  </Typography>
+                  <Typography variant="h6" sx={{ fontSize: 13, mt: 2 }}>
+                    Write better.Think more clearly.Stay organized
+                  </Typography>
+                </CardContent>
               </Card>
             </Box>
 
             <Box sx={{ m: 2 }}>
-              <Card sx={{ maxWidth: 345 }}>
-                <CardActionArea>
-                  <CardContent>
-                    <GroupsIcon />
-                    <Typography variant="h6" color="text.primary">
-                      With my team
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Wikis, docs, tasks & projects, all in one place.
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
+              <Card className={styles.card} sx={{ maxWidth: 345, height: 200 }}>
+                <CardContent>
+                  <GroupsIcon />
+                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                    With my team
+                  </Typography>
+                  <Typography variant="h6" sx={{ fontSize: 13, mt: 2 }}>
+                    Wikis, docs, tasks & projects, all in one place.
+                  </Typography>
+                </CardContent>
               </Card>
             </Box>
           </Box>
@@ -75,7 +77,8 @@ export default function Planning(props) {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            size="large"
+            sx={{ mt: 3, mb: 2, textTransform: "none" }}
           >
             Create Workspace
           </Button>

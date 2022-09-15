@@ -18,13 +18,16 @@ export default function Home(props) {
       <CssBaseline />
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 6,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <CheckCircleIcon color="primary" sx={{ mb: 6, alignItems: "center" }} />
+        <CheckCircleIcon
+          color="primary"
+          sx={{ mb: 6, alignItems: "center", fontSize: 50 }}
+        />
         <Typography sx={{ fontWeight: "bold" }} variant="h4">
           Congratulations, Eren!
         </Typography>
@@ -38,7 +41,8 @@ export default function Home(props) {
             fullWidth
             color="primary"
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            size="large"
+            sx={{ mt: 3, mb: 2, textTransform: "none", width: 400 }}
           >
             Launch Eden
           </Button>

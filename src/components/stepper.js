@@ -53,7 +53,7 @@ export default function HorizontalNonLinearStepper() {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Box sx={{ width: "50%", margin: "auto" }}>
+      <Box sx={{ width: "40%", margin: "auto" }}>
         <Stepper nonLinear activeStep={activeStep}>
           {steps.map((label, index) => (
             <Step key={label} completed={completed[index]}>

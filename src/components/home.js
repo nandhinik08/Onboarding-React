@@ -34,10 +34,16 @@ export default function Home(props) {
         <Typography variant="body1">
           You can always create another Workspace later.
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 5 }}>
+        <Box
+          component="form"
+          onSubmit={handleSubmit}
+          noValidate
+          sx={{ mt: 5, width: 400 }}
+        >
           <label>Workspace Name</label>
           <TextField
             margin="normal"
+            size="small"
             fullWidth
             id="WName"
             name="WName"
@@ -50,11 +56,12 @@ export default function Home(props) {
           <Box sx={{ display: "flex", flexDirection: "row" }}>
             <Box
               sx={{
-                width: "40%",
+                width: "55%",
               }}
             >
               <TextField
                 margin="normal"
+                size="small"
                 id="WURL"
                 name="WURL"
                 disabled
@@ -64,6 +71,7 @@ export default function Home(props) {
             <Box sx={{ width: "100%" }}>
               <TextField
                 margin="normal"
+                size="small"
                 id="URL"
                 name="URL"
                 placeholder="Example"
@@ -75,7 +83,8 @@ export default function Home(props) {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            size="large"
+            sx={{ mt: 3, mb: 2, textTransform: "none" }}
           >
             Create Workspace
           </Button>
